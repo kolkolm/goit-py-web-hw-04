@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hw4-message</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div><a href="/" class="nav-button">Home</a></div>
+        <div><a href="/message" class="nav-button">Write to me</a></div>
+    </nav>
+    <main id="con">
+        <form id="formoch" action="/message" method="POST" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
+            <h1 class="h3">Write to me</h1>
+            <div class="row">
+                <label class="te1"> Your name </label>
+                <input class="inp" name="username" type="text"/>
+            </div>
+            <div class="row">
+                <label class="te1"> Your text message </label>
+                <textarea name="message"></textarea>
+            </div>
+            <div class="buts">
+                <button name="" type="submit">
+                    Send
+                </button>
+                <button name="" type="reset">
+                    Reset
+                </button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
