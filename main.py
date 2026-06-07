@@ -21,8 +21,11 @@ def run_server(ip, port):
             data, address = sock.recvfrom(1024)
             payload = json.loads(data.decode('utf-8'))
 
-            if pathlib.Path("data.json").exists() and pathlib.Path("data.json").stat().st_size > 0:
-                with open("data.json", 'r', encoding='utf-8') as f:
+            pathlib.Path('storage').mkdir(exist_ok=True)
+            file_path = pathlib.Path('storage/data.json')
+
+            if file_path.exists() and file_path.stat().st_size > 0:
+                with open(file_path, 'r', encoding='utf-8') as f:
                     try:
                         storage = json.load(f)
                     except json.JSONDecodeError:
@@ -33,7 +36,7 @@ def run_server(ip, port):
             timestamp = str(datetime.now())
             storage[timestamp] = payload
 
-            with open("data.json", 'w', encoding='utf-8') as f:
+            with open(file_path, 'w', encoding='utf-8') as f:
                 json.dump(storage, f, ensure_ascii=False, indent=4)
 
     except KeyboardInterrupt:
